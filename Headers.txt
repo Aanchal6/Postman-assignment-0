@@ -1,0 +1,111 @@
+# Request headers (6)
+Postman-Token 
+
+Value - <calculated when request is sent>
+-Used internally by Postman to track requests.
+-Typically calculated automatically when sending a request.
+-Helps prevent duplicate request caching.
+
+2. Host
+
+Value - calculated when request is sent
+-Specifies the host (domain name or IP) of the server the request is being sent to.
+-Example: Host: api.example.com
+-Calculated automatically when sending a request.
+
+3. User-Agent 
+
+ value- PostmanRuntime/7.43.0
+-Identifies the client (browser, application, or tool) making the request.
+-Example: PostmanRuntime/7.43.0 (indicating the request was sent from Postman).
+-Servers use this to tailor responses or for logging.
+
+4. Accept
+
+Value- */*
+- Specifies the type of content the client expects from the server.
+- Example: */* means the client accepts any type of response (HTML, JSON, XML, etc.).
+- Common values:
+	-application/json → Prefers JSON responses.
+	-text/html → Prefers HTML responses.
+
+5. Accept-Encoding
+
+Value- gzip, deflate, br
+- Specifies the types of compression the client supports.
+- Example: gzip, deflate, br
+- Helps reduce response size for faster loading.
+
+6.Connection
+
+Value- keep alive
+- Controls whether the connection remains open after the request.
+- Example: keep-alive (keeps the connection open for multiple requests).
+- Alternative: close (closes the connection after the request)
+
+# Response Header (12)
+1. Content- Type
+
+Value- application/json; charset=UTF-8
+- Specifies the type of data returned by the server 
+- Example: application/json; charset=UTF-8
+- This means the response is in JSON format, encoded in UTF-8.
+
+2. Vary
+
+Value- Origin
+- Informs caching servers which request headers affect the response.
+- Example values:
+   -Origin → Response changes based on the request’s origin.
+   -X-Origin → Similar, but includes cross-origin concerns.
+   -Referer → Response may vary depending on the referer header.
+
+3.Content-Encoding
+
+Value-gzip 
+- Specifies the compression method used in the response.
+- Example: gzip → Response is compressed using Gzip to reduce size.
+
+4. Date
+
+Value- Mon, 03 Feb 2025 03:14:12 GMT
+- The timestamp when the server generated the response.
+- Example: Mon, 03 Feb 2025 03:14:12 GMT
+
+5. Server
+
+Value-ESF
+- Identifies the server software handling the request.
+- Example: ESF (Google’s Edge Server Framework).
+
+6. X-XSS-Protection
+
+Value-
+- Provides protection against Cross-Site Scripting (XSS) attacks.
+- Example: 0 → XSS protection is disabled.
+
+7. X-Frame-options
+
+Value- 0
+- Controls whether a page can be embedded in an <iframe>.
+- Provides protection against Cross-Site Scripting (XSS) attacks.
+- Example: 0 → XSS protection is disabled.
+
+8. X-Content-Type-Options
+
+Value- No sniff
+- Prevents browsers from MIME-sniffing content types.
+- Example: nosniff → Forces browsers to respect the declared Content-Type.
+
+9. Alt-Svc (Alternative Services)
+
+Value- 	h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+- Specifies an alternative protocol/server for requests.
+- This suggests the server supports HTTP/3 (h3), using port 443, with a max-age of    2,592,000 seconds (30 days).
+
+10. Transfer-Encoding
+
+Value- chunked
+- Specifies how the response is sent.
+- Example: chunked
+- This means the response is sent in chunks rather than a single block.
