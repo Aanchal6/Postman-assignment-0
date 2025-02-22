@@ -4,7 +4,7 @@ module.exports = async (phrase) => {
     const results = await axios.get('https://www.googleapis.com/books/v1/volumes', {
         params: {
             format: 'json',
-            q: $`{phrase}`
+            q: `${phrase}\`
         }
     })
 
